@@ -1,0 +1,128 @@
+Este repositório contém anotações e insights sobre o gerenciamento de recursos na AWS, com foco em IAM, faturamento, instâncias EC2, EBS, S3 e Lambda Functions, baseados no conteúdo assistido e consultado como material de apoio.
+
+Estou colocando na pasta images deste repositório um diagrama que criei no draw.io para melhor visualização e fixação de todo conteúdo abordado nas aulas e materiais.
+
+O que você vai encontrar nesse documento?
+
+✅ IAM
+✅ Faturamento
+✅ Instâncias EC2
+✅ EBS
+✅ S3
+✅ Lambda Functions
+
+---------------------------------------------------------------------------IAM---------------------------------------------------------------------------
+
+1. Usuários
+
+Acesse o console IAM, vá para Usuários e clique em Adicionar usuário.
+Defina nome e tipo de acesso (programático, console ou ambos).
+Configure senha (automática ou personalizada) e habilite redefinição, se necessário.
+Adicione a grupos ou atribua políticas diretamente.
+
+2. Grupos
+
+No console IAM, acesse Grupos e clique em Criar novo grupo.
+Nomeie o grupo e associe políticas (ex.: AmazonS3ReadOnlyAccess).
+Adicione usuários para herdar permissões.
+
+3. Permissões
+
+Políticas Gerenciadas: Use políticas pré-definidas ou crie personalizadas em JSON.
+Políticas Inline: Aplique permissões específicas (menos recomendado).
+Princípio do Menor Privilégio: Conceda apenas permissões necessárias.
+
+4. NÃO ESQUEÇA ⚠
+
+⚠️ Habilite MFA para acesso ao console.
+
+⚠️ Use grupos para permissões.
+
+⚠️ Revise com IAM Access Analyzer.
+
+⚠️ Evite a conta root para tarefas diárias.
+
+-----------------------------------------------------------------Faturamento e Custos----------------------------------------------------------------------
+
+
+Acesse Billing and Cost Management no console para visualizar custos.
+
+Configure alertas em Budgets para evitar exceder o limite gratuito.
+
+2. Orçamentos
+
+Vá para AWS Budgets, clique em Criar orçamento.
+
+Defina limite, período e filtros.
+
+Configure notificações via e-mail ou SNS.
+
+4. Tags
+
+Habilite Cost Allocation Tags e aplique tags (ex.: "Projeto").
+
+Use no Cost Explorer para alocar custos.
+
+5. NÃO ESQUEÇA
+
+⚠️ Ative Free Tier Usage Alerts.
+
+⚠️ Use Savings Plans ou instâncias reservadas.
+
+⚠️ Monitore recursos ociosos com Trusted Advisor.
+
+-------------------------------------------------------------------Instâncias EC2---------------------------------------------------------------------------
+
+**TIPOS:**
+
+General Purpose: A1, M6g, T4g, M5 (para servidores web e testes).
+
+Compute Optimized: C6g, C5n, C5 (para análise e HPC).
+
+Memory Optimized: R6g, R4, R5 (para bancos de dados em memória).
+
+Storage Optimized: I3, I3en, D2 (para big data).
+
+Accelerated Computing: P3, P2, Inf1 (para IA e renderização).
+
+**EBS (Elastic Block Store)**
+
+Crie volumes EBS no console EC2 para armazenamento persistente.
+
+Anexe volumes a instâncias EC2 e configure tamanhos (ex.: 8 GiB a 16 TiB).
+
+Faça snapshots para backup e restauração de dados.
+
+**S3 (Simple Storage Service)**
+
+S3 Standard: Alta durabilidade (11 9's), 99.99% disponibilidade, ideal para acesso frequente.
+
+S3 Intelligent-Tiering: Otimiza custos com base no acesso.
+
+S3 Standard-IA: 99.9% disponibilidade, para acesso ocasional (mín. 128KB).
+
+S3 One Zone-IA: 99.5%, dados em uma zona (mín. 128KB).
+
+S3 Glacier: 99.99%, arquivamento (mín. 40KB, 90 dias).
+
+S3 Glacier Deep Archive: 99.99%, arquivamento longo prazo (180 dias).
+
+**Lambda Functions**
+
+Crie funções Lambda no console para executar código sem gerenciar servidores.
+
+Configure o tempo de execução (ex.: Python 3.9) e o gatilho (ex.: S3, API Gateway).
+
+Teste e monitore logs no CloudWatch para otimizar desempenho.
+
+**Experiência e Insights**
+
+⚡ Pratiquei a criação de usuários IAM e grupos, aplicando o princípio do menor privilégio.
+
+⚡ Configurei orçamentos e tags para controle de custos.
+
+⚡ Explorei instâncias EC2 e volumes EBS, testando snapshots.
+
+⚡ Utilizei S3 para armazenar arquivos e Lambda para automação simples.
+
+⚡ Desafios incluíram entender permissões e otimizar custos, resolvidos com documentação AWS.
